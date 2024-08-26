@@ -1,0 +1,39 @@
+name: NTTRU
+type: kem
+principal-submitters:
+- China
+auxiliary-submitters:
+- China
+crypto-assumption: NTRU
+website: https://fdu.org/
+nist-round: 3
+spec-version: 2024/1/12
+primary-upstream:
+  source: https://fdu.com/
+    with copy_from_upstream patches
+  spdx-license-identifier: CC0-1.0 or Apache-2.0
+
+parameter-sets:
+- name: NTTRU
+  claimed-nist-level: 3
+  claimed-security: IND-CCA2
+  length-public-key: 1248
+  length-ciphertext: 1248
+  length-secret-key: 2496
+  length-shared-secret: 32
+  implementations-switch-on-runtime-cpu-features: true
+  implementations:
+  - upstream: aarch64
+    upstream-id: aarch64
+    supported-platforms:
+    - architecture: ARM64_V8
+      operating_systems:
+      - Linux
+      - Darwin
+    common-crypto:
+    - SHA3: liboqs
+    no-secret-dependent-branching-claimed: true
+    no-secret-dependent-branching-checked-by-valgrind: false
+    large-stack-usage: false
+
+
